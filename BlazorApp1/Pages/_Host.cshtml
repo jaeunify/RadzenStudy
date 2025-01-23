@@ -1,0 +1,16 @@
+﻿@page "/"
+@namespace BlazorApp1.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+
+<head>
+    <title>RadzenBlazorSample</title>
+
+    <link rel="stylesheet" href="_content/Radzen.Blazor/css/default-base.css">
+    <script src="_content/Radzen.Blazor/Radzen.Blazor.js?v=@(typeof(Radzen.Colors).Assembly.GetName().Version)"></script>
+</head>
+<body>
+    <component type="typeof(App)" render-mode="ServerPrerendered"/>
+</body>
