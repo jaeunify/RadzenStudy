@@ -4,27 +4,27 @@
 
 <h1>Test</h1>
 
-<p role="status">Current count: @currentCount</p>
+<div class="rz-p-12 rz-text-align-center">
+    <RadzenAutoComplete @bind-Value=@Id Style="width: 13rem" InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Company Name" }})" />
+    <RadzenText TextStyle="TextStyle.Body2">@((MarkupString)(!string.IsNullOrEmpty(StoredId) ? $"현재 닉네임: , Value is: <strong>{StoredId}</strong>" : ""))</RadzenText>
+</div>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-
-<RadzenButton Click="@ButtonClicked" Text="Hi"></RadzenButton>
-
-@code {
-
-    void ButtonClicked()
-    {
-        // Handle the Click event of RadzenButton
-    }
-
-}
 
 @code {
-    private int currentCount = 0;
+    private string _id; // private 필드 추가
 
-    private void IncrementCount()
+    string Id
     {
-        currentCount++;
+        get => _id; // 필드 반환
+        set
+        {
+            if (value is not null)
+            {
+                _id = value; // 필드에 값 저장
+                StoredId = value;
+            }
+        }
     }
 
+    string StoredId;
 }
